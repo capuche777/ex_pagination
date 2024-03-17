@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Blog List{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.title }}</h1>
+        {{ post.body|truncatewords:50 }}
+    {% endfor %}
+    {% include "includes/paginator.html" with page=page_obj %}
+{% endblock %}
